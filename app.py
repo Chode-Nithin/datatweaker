@@ -26,9 +26,7 @@ st.markdown('''
 # Upload CSV data
 with st.sidebar.header('1. Upload your CSV data'):
     uploaded_file = st.sidebar.file_uploader("Upload your input CSV file", type=["csv"])
-    st.sidebar.markdown("""
-[Example CSV input file](./player_playingtime.csv)
-""")
+    
 
 
 
