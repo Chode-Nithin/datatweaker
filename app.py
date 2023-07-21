@@ -242,50 +242,7 @@ def main():
 
     else:
         st.info('Awaiting for CSV file to be uploaded.')
-        if st.button('Press to use Example Dataset'):
-            # Example data
-            @st.cache_data
-            def load_data():
-                a = pd.DataFrame(
-                    np.random.rand(100, 5),
-                    columns=['a', 'b', 'c', 'd', 'e']
-                )
-                return a
-
-            df = load_data()
-
-            # Show missing values report using pandas_profiling
-            st.header("Missing Values Report")
-            pr = pp.ProfileReport(df, explorative=True)
-            st_profile_report(pr)
-
-            # Display options after getting the report
-            st.header("Data Transformation Options")
-
-            if st.checkbox("Remove Duplicate Values"):
-                df = remove_duplicates(df)
-
-            primary_key_candidates = identify_primary_key(df)
-
-            if st.checkbox("Identify Primary Key"):
-                if len(primary_key_candidates) > 0:
-                    st.info(f"Possible Primary Key(s): {', '.join(primary_key_candidates)}")
-                else:
-                    st.warning("No Primary Key candidates found.")
-
-            if st.checkbox("Replace Missing Values"):
-                missing_value_strategy = st.selectbox(
-                    "Choose missing value replacement strategy:",
-                    ["Leave as NaN", "Replace with 0", "Replace with mean", "Replace with median"]
-                )
-
-                df = replace_missing_values(df, missing_value_strategy)
-
-            if st.checkbox("Convert Categorical Data to Numerical"):
-                df = convert_categorical_to_numerical(df)
-
-            st.header("Processed DataFrame")
-            st.dataframe(df)
+        
 
     
 if __name__ == "__main__":
