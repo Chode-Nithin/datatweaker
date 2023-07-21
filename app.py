@@ -10,16 +10,15 @@ import streamlit as st
 from sklearn.preprocessing import LabelEncoder
 from ydata_profiling import ProfileReport
 
-st.set_page_config(layout="wide", page_title="The EDA App", page_icon=":rocket:")
+st.set_page_config(layout="wide", page_title="The DATA EXPLORER App", page_icon=":rocket:")
 
 # Web App Title
 st.markdown('''
-# **The EDA App**
+# **The DATA EXPLORER App**
 
-This is the **EDA App** created in Streamlit using the **pandas-profiling** library.
-
- App built in `Python` + `Streamlit`
-
+"Unlock the Power of Data: Your All-in-One EDA and Data Preprocessing Companion!"
+"DataExplore: Discover Insights, Cleanse Data, Excel in Analysis!"
+ 
 ---
 ''')
 
