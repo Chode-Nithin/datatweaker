@@ -83,7 +83,7 @@ def main():
     global uploaded_file
 
     if uploaded_file is not None:
-        @st.cache_data
+        
         def load_csv():
             csv = pd.read_csv(uploaded_file)
             return csv
