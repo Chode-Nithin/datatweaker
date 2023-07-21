@@ -16,7 +16,8 @@ st.set_page_config(layout="wide", page_title="The DATA EXPLORER App", page_icon=
 st.markdown('''
 # **The DATA EXPLORER App**
 
-"Unlock the Power of Data: Your All-in-One EDA and Data Preprocessing Companion!"
+"Unlock the Power of Data: Your All-in-One EDA and Data Preprocessing Companion!"/n
+
 "DataExplore: Discover Insights, Cleanse Data, Excel in Analysis!"
  
 ---
