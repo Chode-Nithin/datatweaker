@@ -190,7 +190,7 @@ def main():
         
         st.header("EDA Report")
         if st.checkbox("Show Report"):
-            st.header("Complete Report")
+            st.header("Data Transformation Options")
             pr = ProfileReport(df, explorative=True)
             report_html = pr.to_html()
 
@@ -211,13 +211,13 @@ def main():
         if st.checkbox("Remove Duplicate Values"):
             df = remove_duplicates(df)
 
-        primary_key_candidates = identify_primary_key(df)
+        # primary_key_candidates = identify_primary_key(df)
 
-        if st.checkbox("Identify Primary Key"):
-            if len(primary_key_candidates) > 0:
-                st.info(f"Possible Primary Key(s): {', '.join(primary_key_candidates)}")
-            else:
-                st.warning("No Primary Key candidates found.")
+        # if st.checkbox("Identify Primary Key"):
+        #     if len(primary_key_candidates) > 0:
+        #         st.info(f"Possible Primary Key(s): {', '.join(primary_key_candidates)}")
+        #     else:
+        #         st.warning("No Primary Key candidates found.")
 
         if st.checkbox("Replace Missing Values"):
             missing_value_strategy = st.selectbox(
