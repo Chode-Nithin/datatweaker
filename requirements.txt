@@ -1,8 +1,8 @@
 streamlit
 pandas
 numpy
-ydata-profiling
-streamlit-pandas-profiling
+ydata-profiling==4.6.5
+streamlit-pandas-profiling==3.0.0
 Jinja2
 scikit-learn
 phik
