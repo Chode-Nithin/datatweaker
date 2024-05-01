@@ -189,8 +189,8 @@ def main():
 
         
         st.header("EDA Report")
-        if st.checkbox("Show Missing Values Report"):
-            st.header("Missing Values Report")
+        if st.checkbox("Show Report"):
+            st.header("Complete Report")
             pr = ProfileReport(df, explorative=True)
             report_html = pr.to_html()
 
