@@ -158,12 +158,12 @@ def main():
         if 'Box' in plot_types:
             st.subheader("Box Plot")
             selected_column = st.selectbox("Select a column:", df.columns)
-
+            target_column = st.selectbox("Select a column:", df.columns)
             # Set the height of the Box Plot
             box_height = st.slider("Select the height of the Box Plot:", min_value=1, max_value=20, value=10)
             fig_box, ax_box = plt.subplots(figsize=(10, box_height))
 
-            sns.boxplot(x=selected_column, y='target_column', data=df, ax=ax_box)  # Pass the ax parameter here
+            sns.boxplot(x=selected_column, y=target_column, data=df, ax=ax_box)  # Pass the ax parameter here
             st.pyplot(fig_box)
 
         
