@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-# import pandas_profiling as pp
 import streamlit as st
 from sklearn.preprocessing import LabelEncoder
 from ydata_profiling import ProfileReport
@@ -28,10 +27,6 @@ st.markdown('''
 # Upload CSV data
 with st.sidebar.header('1. Upload your CSV data'):
     uploaded_file = st.sidebar.file_uploader("Upload your input CSV file", type=["csv"])
-    
-
-
-
 
 # Helper function to remove duplicate values
 def remove_duplicates(dataframe):
@@ -47,7 +42,6 @@ def identify_primary_key(dataframe):
 
     return primary_key_candidates
 
-# Helper function to replace missing values based on strategy
 # Helper function to replace missing values based on strategy
 def replace_missing_values(dataframe, strategy):
     if strategy == "Replace with 0":
@@ -65,7 +59,6 @@ def replace_missing_values(dataframe, strategy):
     else:
         return dataframe
 
-
 # Helper function to convert categorical data to numerical
 def convert_categorical_to_numerical(df):
     label_encoder = LabelEncoder()
@@ -76,10 +69,8 @@ def convert_categorical_to_numerical(df):
 
     return df
 
-
 # Main Streamlit app
 def main():
-    st.set_option('deprecation.showPyplotGlobalUse', False)
     global uploaded_file
 
     if uploaded_file is not None:
@@ -94,7 +85,7 @@ def main():
         st.header("Data Visualization Options")
         plot_types = st.multiselect("Select Plot Types:", ['Scatter', 'Line', 'Bar', 'Count', 'Histogram', 'Box', 'Heatmap', 'Pair'])
         
-    # Plotting selected plots
+        # Plotting selected plots
         if 'Scatter' in plot_types:
             st.subheader("Scatter Plot")
             selected_x_column = st.selectbox("Select the X-axis column:", df.columns)
@@ -119,7 +110,6 @@ def main():
             sns.lineplot(x=selected_x_column, y=selected_y_column, data=df, ax=ax)  # Pass the ax parameter here
             st.pyplot(fig)
 
-
         if 'Bar' in plot_types:
             st.subheader("Bar Plot")
             selected_x_column = st.selectbox("Select the X-axis column:", df.columns)
@@ -132,7 +122,6 @@ def main():
             sns.barplot(x=selected_x_column, y=selected_y_column, data=df, ax=ax)  # Pass the ax parameter here
             st.pyplot(fig)
 
-
         if 'Count' in plot_types:
             st.subheader("Count Plot")
             selected_column = st.selectbox("Select a column:", df.columns)
@@ -143,7 +132,6 @@ def main():
 
             sns.countplot(x=selected_column, data=df, ax=ax)  # Pass the ax parameter here
             st.pyplot(fig)
-
 
         if 'Histogram' in plot_types:
             st.subheader("Histogram")
@@ -156,7 +144,6 @@ def main():
             sns.histplot(df[selected_column], kde=True, ax=ax)  # Pass the ax parameter here
             st.pyplot(fig)
 
-
         if 'Box' in plot_types:
             st.subheader("Box Plot")
             target_column = st.selectbox("Select a column:", df.columns)
@@ -168,10 +155,6 @@ def main():
 
             sns.boxplot(x=selected_column, y=target_column, data=df, ax=ax_box)  # Pass the ax parameter here
             st.pyplot(fig_box)
-
-        
-
-
 
         if 'Heatmap' in plot_types:
             st.subheader("Heatmap")
@@ -190,7 +173,6 @@ def main():
             sns.pairplot(df, height=4)
             st.pyplot() 
 
-        
         st.header("EDA Report")
         if st.checkbox("Show Report"):
             st.header("Data Transformation Options")
@@ -208,6 +190,7 @@ def main():
                 st.markdown(href, unsafe_allow_html=True)
 
             st.components.v1.html(report_html, height=800, scrolling=True)
+        
         # Display options after getting the report
         st.header("Data Transformation Options")
 
@@ -241,12 +224,8 @@ def main():
             b64 = base64.b64encode(processed_csv.encode()).decode()
             href = f'<a href="data:file/csv;base64,{b64}" download="processed_dataframe.csv">Download CSV File</a>'
             st.markdown(href, unsafe_allow_html=True)
-
-
     else:
         st.info('Awaiting for CSV file to be uploaded.')
         
-
-    
 if __name__ == "__main__":
     main()
