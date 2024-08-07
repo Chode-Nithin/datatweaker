@@ -9,6 +9,8 @@ import seaborn as sns
 import streamlit as st
 from sklearn.preprocessing import LabelEncoder
 from ydata_profiling import ProfileReport
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 st.set_page_config(layout="wide", page_title="The DATA EXPLORER App", page_icon=":rocket:")
 
